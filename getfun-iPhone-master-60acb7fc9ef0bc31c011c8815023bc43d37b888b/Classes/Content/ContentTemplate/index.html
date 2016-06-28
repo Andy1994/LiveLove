@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, target-densitydpi=medium-dpi; initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>getfun</title>
+    <link rel="stylesheet" href="./jscss/getfun.css">
+</head>
+
+<body id="detail">
+<script type="text/javascript">
+    // window.onerror = function(e){
+    //     alert(e);
+    // }
+    // alert("页面加载了");
+
+</script>
+<div class="all-contaienr">
+<textarea type="text/text" class="J_template" id="J_template_user_info">
+    {{#showHeadBlank_android}}<div class="head-share-blank"> </div>{{/showHeadBlank_android}}
+    {{#showHeadBlank_ios}}<div class="head-share-blank-ios"> </div>{{/showHeadBlank_ios}}
+    <div class="user-info contaienr">
+        <div class="bfc-layout">
+            <div class="bfc-left avator">
+                <div class="img-wrapper"  style="border: 2px solid {{user.color}};">
+                    <img class="avatar-img" src="{{user.avatar}}" alt="">
+                </div>
+            </div>
+            <div class="bfc-right">
+                <div class="name" {{^content.address}}style="padding-top: 10px"{{/content.address}}>
+                    <span id="userId" class="content1">{{user.nickName}}</span>
+                    {{#user.title}}<span class="title" style="background-image: url({{user.title.iconUrl}})"> {{user.title.name}}</span>{{/user.title}}
+                    {{#relatedContent}}<span class="content3">转发自</span><span id="forwardUserId" class="content1">{{relatedContent.user.nickName}}</span>{{/relatedContent}}
+                    <span class="time content2">{{user.time}}</span>
+                </div>
+                {{#content.address}}
+                <p class="address">
+                    {{content.address}}
+                </p>
+                {{/content.address}}
+            </div>
+        </div>
+        <div class="marks">
+            {{#marks}}
+            <span class="mark" style="float:left; margin-bottom: 4px; border:1px solid {{mark.color}};color: {{mark.color}};" markId="{{mark.id}}">{{mark.name}}</span> {{/marks}}
+        </div>
+    </div>
+</textarea>
+
+<textarea type="text/text" class="J_template" id="J_template_link">
+    <div class="link-desc contaienr">
+        {{#contentDetail.title}}
+        <p class="title">
+            {{contentDetail.title}}
+        </p>
+        {{/contentDetail.title}}
+    </div>
+    <div class="split-contaienr"></div>
+    <div class="link-title contaienr">
+        {{#contentDetail.urlTitle}}
+        <p class="title"><b>{{contentDetail.urlTitle}}</b></p>
+        {{/contentDetail.urlTitle}}
+        {{#contentDetail.domainName}}
+        <div class="link-from"><span class="gray">文章来源：</span><span class="name">{{contentDetail.domainName}}</span></div>
+        {{/contentDetail.domainName}}
+    </div>
+</textarea>
+
+<textarea type="text/text" class="J_template" id="J_template_forward">
+        <div class="link-desc contaienr">
+            {{#contentDetail.title}}
+            <p class="title">
+                {{contentDetail.title}}
+            </p>
+            {{/contentDetail.title}}
+        </div>
+        <div class="split-contaienr"></div>
+
+        {{#relatedContent.isLink}}
+        <div class="link-title contaienr">
+            <p class="title"><b>{{relatedContent.contentDetail.urlTitle}}</b></p>
+            {{#relatedContent.contentDetail.domainName}}
+            <div class="link-from"><span class="gray">文章来源：</span><span class="name">{{relatedContent.contentDetail.domainName}}</span></div>
+            {{/relatedContent.contentDetail.domainName}}
+        </div>
+        {{/relatedContent.isLink}}
+
+        {{#relatedContent.isArtice}}
+        {{#relatedContent.contentDetail.title}}
+        <div class="link-title contaienr">
+            <p class="title"><b>{{relatedContent.contentDetail.title}}</b></p>
+        </div>
+        {{/relatedContent.contentDetail.title}}
+        {{/relatedContent.isArtice}}
+</textarea>
+
+<textarea type="text/text" class="J_template" id="J_template_article">
+    <div class="article-title contaienr">
+        {{#contentDetail.title}}
+        <p class="title">
+            <b>{{contentDetail.title}}</b>
+        </p>
+        {{/contentDetail.title}}
+    </div>
+</textarea>
+
+        <div class="detail-contaienr contaienr"></div>
+</div>
+    <script src="./jscss/getfun.js" data-main="./scripts/index"></script>
+</body>
+
+</html>
